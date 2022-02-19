@@ -1,0 +1,7 @@
+Supplier;IdCC;Identifier;VersionNumber;VersionDate;RevisionNumber;CodedName;PreferredName;Definition;ISOLanguageCode;ISOCountryCode;Note;Remark;Level;MKSubclass;MKKeyword;MKBSA;IrdiCC
+0173-1;AKJ313002;AKJ313;2,00;;1,00;19000000,00;Information, communication and media technology;---empty---;en;US;---empty---;---empty---;1,00;1,00;0,00;;0173-1#01-AKJ313#002
+0173-1;AKJ317004;AKJ317;4,00;;1,00;19010000,00;Computer system;---empty---;en;US;---empty---;---empty---;2,00;1,00;0,00;;0173-1#01-AKJ317#004
+0173-1;ACL245003;ACL245;3,00;;1,00;19010200,00;Mobile PC;---empty---;en;US;---empty---;---empty---;3,00;1,00;0,00;;0173-1#01-ACL245#003
+0173-1;ACL455006;ACL455;6,00;;1,00;19010201,00;Tablet PC;---empty---;en;US;---empty---;---empty---;4,00;0,00;1,00;2,00;0173-1#01-ACL455#006
+0173-1;AEI956001;AEI956;1,00;;1,00;19010202,00;Notebook;small portable personal computer which is usually explained hinged;en;US;---empty---;---empty---;4,00;0,00;1,00;2,00;0173-1#01-AEI956#001
+0173-1;ACL457006;ACL457;6,00;;1,00;19010290,00;Mobile PC (unclassified);---empty---;en;US;---empty---;---empty---;4,00;0,00;1,00;2,00;0173-1#01-ACL457#006

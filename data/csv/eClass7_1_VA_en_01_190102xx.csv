@@ -1,0 +1,101 @@
+Supplier;IdVA;Identifier;VersionNumber;RevisionNumber;VersionDate;PreferredName;ShortName;Definition;Reference;ISOLanguageCode;ISOCountryCode;IrdiVA;DataType
+0173-1;AAB851001;AAB851;1,00;8,00;;IEEE 802.11d;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAB851#001;STRING
+0173-1;AAB852001;AAB852;1,00;8,00;;IEEE 802.11e;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAB852#001;STRING
+0173-1;AAB853001;AAB853;1,00;8,00;;IEEE 802.11f;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAB853#001;STRING
+0173-1;AAB854001;AAB854;1,00;8,00;;IEEE 802.11i;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAB854#001;STRING
+0173-1;AAB855001;AAB855;1,00;8,00;;IEEE 802.11j;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAB855#001;STRING
+0173-1;AAB856001;AAB856;1,00;8,00;;IEEE 802.11n;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAB856#001;STRING
+0173-1;AAC097001;AAC097;1,00;8,00;;10 Mbit;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAC097#001;STRING
+0173-1;AAC135001;AAC135;1,00;8,00;;10/100 Mbit;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAC135#001;STRING
+0173-1;AAC136001;AAC136;1,00;8,00;;10/100/1000 Mbit;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAC136#001;STRING
+0173-1;AAC167001;AAC167;1,00;8,00;;1024x768;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAC167#001;STRING
+0173-1;AAC218001;AAC218;1,00;8,00;;1280x768;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAC218#001;STRING
+0173-1;AAC228001;AAC228;1,00;8,00;;1366x768;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAC228#001;STRING
+0173-1;AAC234001;AAC234;1,00;8,00;;1440x900;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAC234#001;STRING
+0173-1;AAC254001;AAC254;1,00;8,00;;1680x1050;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAC254#001;STRING
+0173-1;AAC266001;AAC266;1,00;8,00;;1920x1080;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAC266#001;STRING
+0173-1;AAC994001;AAC994;1,00;8,00;;640x480;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAC994#001;STRING
+0173-1;AAD084001;AAD084;1,00;8,00;;800x600;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAD084#001;STRING
+0173-1;AAD696001;AAD696;1,00;8,00;;BD;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAD696#001;STRING
+0173-1;AAF489001;AAF489;1,00;8,00;;DVD;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAF489#001;STRING
+0173-1;AAP274001;AAP274;1,00;8,00;;WXGA;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAP274#001;STRING
+0173-1;AAP466001;AAP466;1,00;8,00;;0,67291666667;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAP466#001;STRING
+0173-1;AAP506001;AAP506;1,00;8,00;;0,16875;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAP506#001;STRING
+0173-1;AAP784001;AAP784;1,00;8,00;;CD;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAP784#001;STRING
+0173-1;AAQ288001;AAQ288;1,00;8,00;;HD;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAQ288#001;STRING
+0173-1;AAS943001;AAS943;1,00;8,00;;Device batteries, primarily;---empty---;not rechargeable device batteries serve for the electricity supply of small, much more portable devices, for example, in flashlights or mobile phones;---empty---;de;DE;0173-1#07-AAS943#001;STRING
+0173-1;AAS944001;AAS944;1,00;8,00;;Device batteries,secondarily;---empty---;rechargeable Device batteries serve for the electricity supply of small, much more portable devices, for example, in flashlights or mobile phones;---empty---;de;DE;0173-1#07-AAS944#001;STRING
+0173-1;AAS945001;AAS945;1,00;8,00;;Industriebatterien und -akkumulatoren;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAS945#001;STRING
+0173-1;AAS946001;AAS946;1,00;8,00;;Vehicle batteries and vehicle accumulators;---empty---;serve for the application in vehicles;---empty---;de;DE;0173-1#07-AAS946#001;STRING
+0173-1;AAS947001;AAS947;1,00;8,00;;LR20;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAS947#001;STRING
+0173-1;AAS948001;AAS948;1,00;8,00;;LR14;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAS948#001;STRING
+0173-1;AAS949001;AAS949;1,00;8,00;;LR6;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAS949#001;STRING
+0173-1;AAS950001;AAS950;1,00;8,00;;LR03;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAS950#001;STRING
+0173-1;AAS951001;AAS951;1,00;8,00;;LR1;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAS951#001;STRING
+0173-1;AAS952001;AAS952;1,00;8,00;;LR61;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAS952#001;STRING
+0173-1;AAS953001;AAS953;1,00;8,00;;HR22;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAS953#001;STRING
+0173-1;AAS954001;AAS954;1,00;8,00;;Nickel cadmium;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAS954#001;STRING
+0173-1;AAS955001;AAS955;1,00;8,00;;Small lead;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAS955#001;STRING
+0173-1;AAS956001;AAS956;1,00;8,00;;Alkali manganese;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAS956#001;STRING
+0173-1;AAS957001;AAS957;1,00;8,00;;Nickel Metallhydrid;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAS957#001;STRING
+0173-1;AAS958001;AAS958;1,00;8,00;;Lithium Ion/Lithium polymer;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAS958#001;STRING
+0173-1;AAS959001;AAS959;1,00;8,00;;Lithium;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAS959#001;STRING
+0173-1;AAS960001;AAS960;1,00;8,00;;Zinc air;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAS960#001;STRING
+0173-1;AAS961001;AAS961;1,00;8,00;;Alkali Mangan/Nickel zinc;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAS961#001;STRING
+0173-1;AAS962001;AAS962;1,00;8,00;;Zinc cabbage;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAS962#001;STRING
+0173-1;AAU465001;AAU465;1,00;1,00;;non-glare;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU465#001;STRING
+0173-1;AAU466001;AAU466;1,00;1,00;;glare;---empty---;description of the surface of a display for computers;---empty---;de;DE;0173-1#07-AAU466#001;STRING
+0173-1;AAU816001;AAU816;1,00;1,00;;CD 24x;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU816#001;STRING
+0173-1;AAU817001;AAU817;1,00;1,00;;CD-R 24x;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU817#001;STRING
+0173-1;AAU818001;AAU818;1,00;1,00;;CD-RW 24x;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU818#001;STRING
+0173-1;AAU819001;AAU819;1,00;1,00;;CD-RW 10x;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU819#001;STRING
+0173-1;AAU820001;AAU820;1,00;1,00;;DVD 8x;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU820#001;STRING
+0173-1;AAU821001;AAU821;1,00;1,00;;DVD-R DL 8x;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU821#001;STRING
+0173-1;AAU822001;AAU822;1,00;1,00;;DVD-R 8x;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU822#001;STRING
+0173-1;AAU823001;AAU823;1,00;1,00;;DVD-RW 8x;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU823#001;STRING
+0173-1;AAU824001;AAU824;1,00;1,00;;DVD+R DL 8x;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU824#001;STRING
+0173-1;AAU825001;AAU825;1,00;1,00;;DVD+R 8x;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU825#001;STRING
+0173-1;AAU826001;AAU826;1,00;1,00;;DVD+RW 8x;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU826#001;STRING
+0173-1;AAU827001;AAU827;1,00;1,00;;DVD-R DL 6x;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU827#001;STRING
+0173-1;AAU828001;AAU828;1,00;1,00;;DVD-RW 6x;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU828#001;STRING
+0173-1;AAU829001;AAU829;1,00;1,00;;DVD+R DL 6x;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU829#001;STRING
+0173-1;AAU830001;AAU830;1,00;1,00;;DVD-RAM 5x;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU830#001;STRING
+0173-1;AAU831001;AAU831;1,00;1,00;;HD-DVD;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU831#001;STRING
+0173-1;AAU832001;AAU832;1,00;1,00;;VMD;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU832#001;STRING
+0173-1;AAU833001;AAU833;1,00;1,00;;800x480;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU833#001;STRING
+0173-1;AAU834001;AAU834;1,00;1,00;;1400x900;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU834#001;STRING
+0173-1;AAU835001;AAU835;1,00;1,00;;1600x900;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU835#001;STRING
+0173-1;AAU836001;AAU836;1,00;1,00;;1920x1200;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU836#001;STRING
+0173-1;AAU837001;AAU837;1,00;1,00;;2048x1152;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU837#001;STRING
+0173-1;AAU839001;AAU839;1,00;1,00;;2560x1600;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU839#001;STRING
+0173-1;AAU840001;AAU840;1,00;1,00;;WSGA;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU840#001;STRING
+0173-1;AAU841001;AAU841;1,00;1,00;;WSXGA;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU841#001;STRING
+0173-1;AAU842001;AAU842;1,00;1,00;;WUXGA;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU842#001;STRING
+0173-1;AAU843001;AAU843;1,00;1,00;;WQXGA;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU843#001;STRING
+0173-1;AAU844001;AAU844;1,00;1,00;;SDRAM;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU844#001;STRING
+0173-1;AAU845001;AAU845;1,00;1,00;;DDR SDRAM;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU845#001;STRING
+0173-1;AAU846001;AAU846;1,00;1,00;;DDR2;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU846#001;STRING
+0173-1;AAU847001;AAU847;1,00;1,00;;DDR3;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU847#001;STRING
+0173-1;AAU848001;AAU848;1,00;1,00;;DDR3 SDRAM;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU848#001;STRING
+0173-1;AAU849001;AAU849;1,00;1,00;;SO DIMM;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU849#001;STRING
+0173-1;AAU850001;AAU850;1,00;1,00;;CCFL;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU850#001;STRING
+0173-1;AAU851001;AAU851;1,00;1,00;;IEEE 802.15.1;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU851#001;STRING
+0173-1;AAU852001;AAU852;1,00;1,00;;IEEE 802.11b;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU852#001;STRING
+0173-1;AAU853001;AAU853;1,00;1,00;;IEEE 802.11g;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU853#001;STRING
+0173-1;AAU854001;AAU854;1,00;1,00;;IEEE 1394;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU854#001;STRING
+0173-1;AAU855001;AAU855;1,00;1,00;;0,21111111111;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU855#001;STRING
+0173-1;AAU856001;AAU856;1,00;1,00;;0,63125;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU856#001;STRING
+0173-1;AAU857001;AAU857;1,00;1,00;;0,67361111111;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU857#001;STRING
+0173-1;AAU858001;AAU858;1,00;1,00;;IDE;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU858#001;STRING
+0173-1;AAU859001;AAU859;1,00;1,00;;EIDE;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU859#001;STRING
+0173-1;AAU860001;AAU860;1,00;1,00;;S-ATA;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU860#001;STRING
+0173-1;AAU861001;AAU861;1,00;1,00;;SATA-600;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU861#001;STRING
+0173-1;AAU862001;AAU862;1,00;1,00;;SCSI;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU862#001;STRING
+0173-1;AAU863001;AAU863;1,00;1,00;;NVM;---empty---;---empty---;---empty---;de;DE;0173-1#07-AAU863#001;STRING
+0173-1;BAA233001;BAA233;1,00;1,00;;Module expansion;---empty---;---empty---;---empty---;de;DE;0173-1#07-BAA233#001;STRING
+0173-1;BAA725001;BAA725;1,00;1,00;;LED;---empty---;---empty---;---empty---;de;DE;0173-1#07-BAA725#001;STRING
+0173-1;BAA829001;BAA829;1,00;1,00;;parallel;---empty---;---empty---;---empty---;de;DE;0173-1#07-BAA829#001;STRING
+0173-1;BAB360001;BAB360;1,00;1,00;;SSD;---empty---;---empty---;---empty---;de;DE;0173-1#07-BAB360#001;STRING
+0173-1;BAB405001;BAB405;1,00;1,00;;serial;---empty---;---empty---;---empty---;de;DE;0173-1#07-BAB405#001;STRING
+0173-1;CAA016001;CAA016;1,00;1,00;;Yes;---empty---;---empty---;---empty---;de;DE;0173-1#07-CAA016#001;BOOLEAN
+0173-1;CAA017001;CAA017;1,00;1,00;;No;---empty---;---empty---;---empty---;de;DE;0173-1#07-CAA017#001;BOOLEAN

@@ -1,0 +1,16 @@
+StructuredNaming;ShortName;Definition;Source;Comment;SINotation;SIName;DINNotation;ECEName;ECECode;NISTName;IECClassification;IrdiUN;NameOfDedicatedQuantity
+megabyte;Mbyte;;;;;;Mbyte;megabyte;4L;;;0173-1#05-AAA042#003;byte data volume
+hour;h;3 600 fold of the SI base unit second;;do not use with SI prefixes;h;;h;;HUR;;;0173-1#05-AAA390#002;time
+megabit second^-1;Mbit/s;1 000 000 fold of the unit bit divided by the SI base unit second;;;Mbit/s;;Mbit s⁻¹;;E20;;;0173-1#05-AAA623#002;bit transmission rate
+millimetre;mm;0,001 fold of the SI base unit metre;;;mm;;mm;;MMT;;;0173-1#05-AAA480#002;distance
+percent;%;hundredth;NIST Special Publication 811:1995;;%;;%;;P1;;;0173-1#05-AAA129#002;neutral ratio
+sone;sone;psychoacoustical unit for the subjective loudness of a tone, whereby the loudness 1 sone is allocated to the loudness level 40 phon;;;sone;;sone;;D15;;;0173-1#05-AAA630#002;loudness
+kilogram;kg;unit of mass, which is equal to the mass of international prototype of the kilogram;;;kg;;kg;;KGM;;;0173-1#05-AAA731#002;mass
+megahertz;MHz;1 000 000 fold of the derived unit hertz;;;MHz;;MHz;;MHZ;;;0173-1#05-AAA581#002;frequency
+minute^-1;1/min;reciprocal of the unit minute;NIST Special Publication 811:1995;;1/min;;min⁻¹;;C94;;;0173-1#05-AAA650#002;frequency
+millisecond;ms;0,001 fold of the SI base unit second;;;ms;;ms;;C26;;;0173-1#05-AAA114#002;time
+gigahertz;GHz;1000 000 000 fold of the derived SI base hertz;;;GHz;;GHz;;A86;;;0173-1#05-AAA505#002;frequency
+milliampere hour;mA·h;product of the 0,001 fold of the SI base unit ampere and the unit hour;;;mA·h;;mA h;;E09;;;0173-1#05-AAA402#002;battery capacity
+candela metre^-2;cd/m²;SI base unit candela divided by the power of the SI base unit metre with the exponent 2;;;cd/m²;;cd m⁻²;;A24;;;0173-1#05-AAA094#002;luminance
+gram;g;0,001 fold of the SI base unit kilogram;;;g;;g;;GRM;;;0173-1#05-AAA728#002;mass
+bit second^-1;bit/s;unit bit divided by the SI base unit second;;;bit/s;;bit s⁻¹;;B10;;;0173-1#05-AAA616#002;bit transmission rate
