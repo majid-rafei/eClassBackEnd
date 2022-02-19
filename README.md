@@ -45,6 +45,6 @@ This is the back-end app for E-Class system.
   └── README.md
   ```
   
-* Adding `'rest_api_framework',` and `'eclass.apps.EclassConfig',` to the *INSTALLED_APPS* section of *dundts_backend/settings.py*.
+* Adding `'rest_framework',` and `'eclass.apps.EclassConfig',` to the *INSTALLED_APPS* section of *dundts_backend/settings.py*.
 Each newly installed app should be added to this section.
 * `python3 manage.py runserver` to run the python app.
