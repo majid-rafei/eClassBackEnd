@@ -21,5 +21,4 @@ from eclass.views import EclassViews
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('getDataStructure', EclassViews().getDataStructure),
-    """ This endpoint is for getting structural data of the e-class tables. """
 ]
