@@ -3,7 +3,7 @@ from pathlib import Path
 from db_connector import DbConnection
 from eclass.settings import ec_str
 
-from .models import createClassDict, createPropertyDict, createValueDict, createUnitDict
+import eclass.models as mdl
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -41,89 +41,132 @@ class EclassDao(metaclass=Singleton):
 		TODO: needs considerations
 		"""
 		db = DbConnection()
-		db.get_cursor().execute(
-			"select * from {}".format(table)
-		)
-		rows = db.cursor.fetchall()
+		query = "select * from {}".format(table)
+		cursor = db.get_cursor()
+		cursor.execute(query)
+		rows = cursor.fetchall()
 		return rows
 
-	def getClasses(self):
+	def getClasses(self, filters):
 		"""
 		This method is to get the e-classes
+		:param filters Is the filters given from the front app
 		"""
+		_type = 'class'
 		db = DbConnection()
-		query = "select * from {}".format(ec_str['class']['table'])
-		db.get_cursor().execute(query)
-		rows = db.cursor.fetchall()
+		query = "select distinct cl.* from {} as cl ".format(ec_str[_type]['table']) + \
+				"where (1=1)"
+		# filters['class'] = {
+		# 	'v': True,
+		# 	'q': "AEI",
+		# }
+		query = setFilters(query, filters, _type, 'cl')
+		cursor = db.get_cursor()
+		cursor.execute(query)
+		rows = cursor.fetchall()
 		return rows
 
-	def getProperties(self, cl):
+	def getProperties(self, cl, filters):
 		"""
 		This method is to get the properties of cl e-class
 		:param cl is the e-class id
+		:param filters Is the filters given from the front app
 		"""
+		_type = 'property'
 		db = DbConnection()
-		query = "select * from {} as pr ".format(ec_str['property']['table']) + \
-				"inner join {} as ccpr on pr.IrdiPR = ccpr.IrdiPR ".format(
+		query = "select distinct pr.* from {} as pr ".format(ec_str['property']['table']) + \
+				"left join {} as ccpr on pr.IrdiPR = ccpr.IrdiPR ".format(
 					ec_str['class']['children']['property']['relation']) + \
-				f"where ccpr.IrdiCC = '{cl}'"
-		db.get_cursor().execute(query)
-		rows = db.cursor.fetchall()
+				f"where (ccpr.IrdiCC = '{cl}')"
+		filters[_type] = {
+			'v': True,
+			'q': "Manufacturer",
+		}
+		query = setFilters(query, filters, _type, 'pr')
+
+		cursor = db.get_cursor()
+		cursor.execute(query)
+		rows = cursor.fetchall()
 		return rows
 
-	def getValues(self, pr):
+	def getValues(self, pr, filters):
 		"""
 		This method is to get the value items
 		:param pr is the property id
+		:param filters Is the filters given from the front app
 		"""
+		_type = 'value'
 		db = DbConnection()
 		query = "select va.* from {} va ".format(ec_str['value']['table']) + \
 				"left join {} prva ".format(ec_str['property']['children']['value']['relation']) + \
 				"on va.IrdiVA = prva.IrdiVA " \
 				f"where prva.IrdiPR = '{pr}'"
-		db.get_cursor().execute(query)
-		rows = db.cursor.fetchall()
+		query = setFilters(query, filters, _type, 'va')
+
+		cursor = db.get_cursor()
+		cursor.execute(query)
+		rows = cursor.fetchall()
 		return rows
 
-	def getUnits(self, pr):
+	def getUnits(self, pr, filters):
 		"""
 		This method is to get the unit items
 		:param pr is the property id
+		:param filters Is the filters given from the front app
 		"""
+		_type = 'unit'
 		db = DbConnection()
 		query = "select un.* from {} un ".format(ec_str['unit']['table']) + \
 				"left join {} pr ".format(ec_str['property']['children']['unit']['relation']) + \
 				"on un.IrdiUN = pr.IrdiUN " \
 				f"where pr.IrdiPR = '{pr}'"
-		db.get_cursor().execute(query)
-		rows = db.cursor.fetchall()
+		query = setFilters(query, filters, _type, 'un')
+
+		cursor = db.get_cursor()
+		cursor.execute(query)
+		rows = cursor.fetchall()
 		return rows
 
-	def getDataStructure(self):
+	def getDataStructure(self, params):
 		"""
 		Creates the data tree from e-class tables
+		:param params Includes input parameters such as filters, etc.
 		"""
+		filters = params['filters']
 		structure = {}
-		cls = self.getClasses()
+		cls = self.getClasses(filters)
+
 		for cl in cls:
-			_cl = createClassDict(cl)
-			prs = self.getProperties(_cl[ec_str['class']['id']])
+			_cl = mdl.createClassDict(cl)
+			prs = self.getProperties(_cl[ec_str['class']['id']], filters)
 			if not prs:
-				structure = prepareStructure(structure, _cl, {}, [], [])
+				structure = prepareStructure(structure, _cl, [], [], [])
 				continue
 			for pr in prs:
-				_pr = createPropertyDict(pr)
-				vas = self.getValues(_pr[ec_str['property']['id']])
+				_pr = mdl.createPropertyDict(pr)
+				vas = self.getValues(_pr[ec_str['property']['id']], filters)
 				_vas = []
 				for va in vas:
-					_vas.append(createValueDict(va))
-				uns = self.getUnits(_pr[ec_str['property']['id']])
+					_vas.append(mdl.createValueDict(va))
+				uns = self.getUnits(_pr[ec_str['property']['id']], filters)
 				_uns = []
 				for un in uns:
-					_uns.append(createUnitDict(un))
+					_uns.append(mdl.createUnitDict(un))
 				structure = prepareStructure(structure, _cl, _pr, _vas, _uns)
 
-		return structure
+		array = convertStructureToArray(structure)
+		return array
+
+	def getFields(self):
+		"""
+		Gets column names of e-class tables
+		"""
+		result = {}
+		result['cl'] = getColumnNames(ec_str['class']['table'])
+		result['pr'] = getColumnNames(ec_str['property']['table'])
+		result['va'] = getColumnNames(ec_str['value']['table'])
+		result['un'] = getColumnNames(ec_str['unit']['table'])
+		return result
 
 
 def prepareStructure(structure, cl, pr, vas, uns):
@@ -142,6 +185,7 @@ def prepareStructure(structure, cl, pr, vas, uns):
 	if cl[ec_str['class']['id']] not in structure:
 		structure[cl[ec_str['class']['id']]] = {
 			'data': cl,
+			'name': cl[ec_str['class']['name']],
 			'children': {},
 		}
 
@@ -152,17 +196,86 @@ def prepareStructure(structure, cl, pr, vas, uns):
 	""" Adding property as the class child """
 	structure[cl[ec_str['class']['id']]]['children'][pr[ec_str['property']['id']]] = {
 		'data': pr,
+		'name': pr[ec_str['property']['name']],
 		'children': {},
-	}
-
-	""" Adding unit as the property child """
-	structure[cl[ec_str['class']['id']]]['children'][pr[ec_str['property']['id']]]['children']['unit'] = {
-		'data': uns,
 	}
 
 	""" Adding value as the property child """
 	structure[cl[ec_str['class']['id']]]['children'][pr[ec_str['property']['id']]]['children']['value'] = {
 		'data': vas,
+		'name': 'value',
 	}
 
+	""" Adding unit as the property child """
+	structure[cl[ec_str['class']['id']]]['children'][pr[ec_str['property']['id']]]['children']['unit'] = {
+		'data': uns,
+		'name': 'unit',
+	}
+
+	# print(structure)
+
 	return structure
+
+
+def setFilters(query, filters, _type, alias):
+	if _type not in filters:
+		return query
+	if filters[_type]['v'] and filters[_type]['q']:
+		query += " and ("
+		for field in getColumnNames(ec_str[_type]['table']):
+			query += " {}.{} like '%{}%' or".format(alias, field['col'], filters[_type]['q'])
+		""" To remove last extra ' or' """
+		query = query[:-3] + ")"
+	return query
+
+
+def getColumnNames(table_name):
+	"""
+	Returns table name of the given table
+	:param table_name Is the desired table name
+	"""
+	cols = []
+	db = DbConnection()
+	cursor = db.get_cursor()
+	for col in cursor.columns(table=table_name):
+		cols.append({
+			'col': col.column_name,
+			'type': 's',
+		})
+	return cols
+
+
+def convertStructureToArray(structure):
+	"""
+	Converts structure object to array for easier process in front
+	:param structure
+	"""
+	array = []
+	i = 0
+	j = 0
+	for cl in structure:
+		_cl = structure[cl]
+		array.append({
+			'data': _cl['data'],
+			'name': _cl['name'],
+			'children': [],
+		})
+		if not bool(_cl['children']):
+			continue
+		for pr in _cl['children']:
+			_pr = _cl['children'][pr]
+			array[i]['children'].append({
+				'data': _pr['data'],
+				'name': _pr['name'],
+				'children': [],
+			})
+			for child in _pr['children']:
+				_child = _pr['children'][child]
+				array[i]['children'][j]['children'].append({
+					'data': _child['data'],
+					'name': _child['name'],
+				})
+			j = j + 1
+		j = 0
+		i = i + 1
+	return array

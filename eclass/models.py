@@ -115,6 +115,7 @@ def createUnitDict(un_object):
 		'NameOfDedicatedQuantity': un_object.NameOfDedicatedQuantity,
 	}
 
+
 # class eClass7_1_CC_en_01_190102xx(models.Model):
 # 	Supplier = models.CharField(max_length=6)
 # 	IdCC = models.CharField(max_length=9)
@@ -135,3 +136,104 @@ def createUnitDict(un_object):
 # 	MKBSA = models.FloatField(null=True)
 # 	IrdiCC = models.CharField(max_length=20)
 # 	objects = models.Manager()
+
+def getFields(_type):
+	if _type == 'class':
+		return getClassFields()
+	if _type == 'property':
+		return getPropertyFields()
+	if _type == 'value':
+		return getValueFields()
+	if _type == 'unit':
+		return getUnitFields()
+
+
+def getClassFields():
+	return {
+		'Supplier',
+		'IdCC',
+		'Identifier',
+		'VersionNumber',
+		'VersionDate',
+		'RevisionNumber',
+		'CodedName',
+		'PreferredName',
+		'Definition',
+		'ISOLanguageCode',
+		'ISOCountryCode',
+		'Note',
+		'Remark',
+		'Level',
+		'MKSubclass',
+		'MKKeyword',
+		'MKBSA',
+		'IrdiCC',
+	}
+
+
+def getPropertyFields():
+	return {
+		'Supplier',
+		'IdPR',
+		'Identifier',
+		'VersionNumber',
+		'VersionDate',
+		'RevisionNumber',
+		'PreferredName',
+		'ShortName',
+		'Definition',
+		'Note',
+		'Remark',
+		'FormularSymbol',
+		'IrdiUN',
+		'ISOLanguageCode',
+		'ISOCountryCode',
+		'Category',
+		'AttributeType',
+		'Reference',
+		'DefinitionClass',
+		'DataType',
+		'DigitsBeforeComma',
+		'DigitsAfterComma',
+		'NumberOfCharacters',
+		'IrdiPR',
+		'CurrencyAlphaCode',
+	}
+
+
+def getValueFields():
+	return {
+		'Supplier',
+		'IdVA',
+		'Identifier',
+		'VersionNumber',
+		'RevisionNumber',
+		'VersionDate',
+		'PreferredName',
+		'ShortName',
+		'Definition',
+		'Reference',
+		'ISOLanguageCode',
+		'ISOCountryCode',
+		'IrdiVA',
+		'DataType',
+	}
+
+
+def getUnitFields():
+	return {
+		'StructuredNaming',
+		'ShortName',
+		'Definition',
+		'Source',
+		'Comment',
+		'SINotation',
+		'SIName',
+		'DINNotation',
+		'ECEName',
+		'ECECode',
+		'NISTName',
+		'IECClassification',
+		'IrdiUN',
+		'NameOfDedicatedQuantity',
+	}

@@ -20,5 +20,6 @@ from eclass.views import EclassViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('getDataStructure', EclassViews().getDataStructure),
+    path('eclass/getDataStructure', EclassViews().getDataStructure),
+    path('eclass/getFields', EclassViews().getFields),
 ]

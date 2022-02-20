@@ -52,7 +52,7 @@ Each newly installed app should be added to this section.
 * `pip install pyodbc`
 for creating connection to the database.
 I had some problems when installing this package, so after some research I found these links helpful:
-  * For installing package python3-dev: [Stackoverflow link 1](https://stackoverflow.com/questions/52887357/problems-when-installing-python3-dev)
+  * For installing package *python3-dev*: [Stackoverflow link 1](https://stackoverflow.com/questions/52887357/problems-when-installing-python3-dev)
   * For *Python.h* fatal error: [Stackoverflow link 2](https://stackoverflow.com/questions/21530577/fatal-error-python-h-no-such-file-or-directory)
 * `pip install pandas`
 
@@ -61,3 +61,15 @@ To get structural data of e-class tables, a class name **EclassDao** is created
 to maintain all methods needed for getting data from e-class tables and creating structural data.
 
 Endpoint is determined in views.py file of eclass module.
+CORS: To overcome cors error, the following is done:
+* `pip install django-cors-headers` package django-cors-headers is installed,
+* adding `'corsheaders',` to installed apps in settings.py of project,
+* adding `'corsheaders.middleware.CorsMiddleware',` to MIDDLEWARE section before common middleware in settings.py of project,
+* also adding allowed origins:
+  ```python
+  CORS_ALLOWED_ORIGINS = [
+      'http://localhost:4200',
+  ]
+  ```
+  to settings.py of project,
+* more information could be found [here](https://stackoverflow.com/questions/35760943/how-can-i-enable-cors-on-django-rest-framework).
