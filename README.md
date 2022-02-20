@@ -50,17 +50,17 @@ Each newly installed app should be added to this section.
 * `python3 manage.py runserver` to run the python app.
 
 * `pip install pyodbc`
-for creating connection to the database.
-I had some problems when installing this package, so after some research I found these links helpful:
+for creating a connection to the database.
+I had some problems when installing this package, so after some research, I found these links helpful:
   * For installing package *python3-dev*: [Stackoverflow link 1](https://stackoverflow.com/questions/52887357/problems-when-installing-python3-dev)
   * For *Python.h* fatal error: [Stackoverflow link 2](https://stackoverflow.com/questions/21530577/fatal-error-python-h-no-such-file-or-directory)
 * `pip install pandas`
 
-## Creating DAO class and endpoint for getting structural data
+## Creating DAO class and endpoint for getting structural data (~ 4 hours)
 To get structural data of e-class tables, a class name **EclassDao** is created 
 to maintain all methods needed for getting data from e-class tables and creating structural data.
 
-Endpoint is determined in views.py file of eclass module.
+The endpoint is determined in views.py file of eclass module.
 CORS: To overcome cors error, the following is done:
 * `pip install django-cors-headers` package django-cors-headers is installed,
 * adding `'corsheaders',` to installed apps in settings.py of project,
@@ -72,4 +72,7 @@ CORS: To overcome cors error, the following is done:
   ]
   ```
   to settings.py of project,
-* more information could be found [here](https://stackoverflow.com/questions/35760943/how-can-i-enable-cors-on-django-rest-framework).
+* More information could be found [here](https://stackoverflow.com/questions/35760943/how-can-i-enable-cors-on-django-rest-framework).
+
+## Adding filters to the endpoint of get structured data (~ 2 hours)
+For the purpose of filtering data by table name and table fields, filters are added to the queries.
