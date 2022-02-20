@@ -1,4 +1,4 @@
-from eclass.settings import ec_str
+from eclass.settings import ec_str, Eclass
 
 
 def createClassDict(cl_object):
@@ -6,7 +6,7 @@ def createClassDict(cl_object):
 	This method converts e-class object to e-class json
 	:param cl_object Is the e-class object resulted from db fetch command
 	"""
-	if hasattr(cl_object, ec_str['class']['id']) is False:
+	if hasattr(cl_object, ec_str[Eclass.CL]['id']) is False:
 		return {}
 	return {
 		'Supplier': cl_object.Supplier,
@@ -35,7 +35,7 @@ def createPropertyDict(pr_object):
 	This method converts property object to property json
 	:param pr_object Is the property object resulted from db fetch command
 	"""
-	if hasattr(pr_object, ec_str['property']['id']) is False:
+	if hasattr(pr_object, ec_str[Eclass.PR]['id']) is False:
 		return {}
 	return {
 		'Supplier': pr_object.Supplier,
@@ -71,7 +71,7 @@ def createValueDict(va_object):
 	This method converts value object to value json
 	:param va_object Is the value object resulted from db fetch command
 	"""
-	if hasattr(va_object, ec_str['value']['id']) is False:
+	if hasattr(va_object, ec_str[Eclass.VA]['id']) is False:
 		return {}
 	return {
 		'Supplier': va_object.Supplier,
@@ -96,7 +96,7 @@ def createUnitDict(un_object):
 	This method converts unit object to unit json
 	:param un_object Is the unit object resulted from db fetch command
 	"""
-	if hasattr(un_object, ec_str['unit']['id']) is False:
+	if hasattr(un_object, ec_str[Eclass.UN]['id']) is False:
 		return {}
 	return {
 		'StructuredNaming': un_object.StructuredNaming,
@@ -136,104 +136,3 @@ def createUnitDict(un_object):
 # 	MKBSA = models.FloatField(null=True)
 # 	IrdiCC = models.CharField(max_length=20)
 # 	objects = models.Manager()
-
-def getFields(_type):
-	if _type == 'class':
-		return getClassFields()
-	if _type == 'property':
-		return getPropertyFields()
-	if _type == 'value':
-		return getValueFields()
-	if _type == 'unit':
-		return getUnitFields()
-
-
-def getClassFields():
-	return {
-		'Supplier',
-		'IdCC',
-		'Identifier',
-		'VersionNumber',
-		'VersionDate',
-		'RevisionNumber',
-		'CodedName',
-		'PreferredName',
-		'Definition',
-		'ISOLanguageCode',
-		'ISOCountryCode',
-		'Note',
-		'Remark',
-		'Level',
-		'MKSubclass',
-		'MKKeyword',
-		'MKBSA',
-		'IrdiCC',
-	}
-
-
-def getPropertyFields():
-	return {
-		'Supplier',
-		'IdPR',
-		'Identifier',
-		'VersionNumber',
-		'VersionDate',
-		'RevisionNumber',
-		'PreferredName',
-		'ShortName',
-		'Definition',
-		'Note',
-		'Remark',
-		'FormularSymbol',
-		'IrdiUN',
-		'ISOLanguageCode',
-		'ISOCountryCode',
-		'Category',
-		'AttributeType',
-		'Reference',
-		'DefinitionClass',
-		'DataType',
-		'DigitsBeforeComma',
-		'DigitsAfterComma',
-		'NumberOfCharacters',
-		'IrdiPR',
-		'CurrencyAlphaCode',
-	}
-
-
-def getValueFields():
-	return {
-		'Supplier',
-		'IdVA',
-		'Identifier',
-		'VersionNumber',
-		'RevisionNumber',
-		'VersionDate',
-		'PreferredName',
-		'ShortName',
-		'Definition',
-		'Reference',
-		'ISOLanguageCode',
-		'ISOCountryCode',
-		'IrdiVA',
-		'DataType',
-	}
-
-
-def getUnitFields():
-	return {
-		'StructuredNaming',
-		'ShortName',
-		'Definition',
-		'Source',
-		'Comment',
-		'SINotation',
-		'SIName',
-		'DINNotation',
-		'ECEName',
-		'ECECode',
-		'NISTName',
-		'IECClassification',
-		'IrdiUN',
-		'NameOfDedicatedQuantity',
-	}

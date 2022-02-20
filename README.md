@@ -74,5 +74,5 @@ CORS: To overcome cors error, the following is done:
   to settings.py of project,
 * More information could be found [here](https://stackoverflow.com/questions/35760943/how-can-i-enable-cors-on-django-rest-framework).
 
-## Adding filters to the endpoint of get structured data (~ 2 hours)
+## Adding filters to the endpoint of get structured data (~ 3 hours)
 For the purpose of filtering data by table name and table fields, filters are added to the queries.

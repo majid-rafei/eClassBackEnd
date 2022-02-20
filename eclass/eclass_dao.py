@@ -1,7 +1,7 @@
 from singleton import Singleton
 from pathlib import Path
 from db_connector import DbConnection
-from eclass.settings import ec_str
+from eclass.settings import ec_str, Eclass
 
 import eclass.models as mdl
 
@@ -52,11 +52,11 @@ class EclassDao(metaclass=Singleton):
 		This method is to get the e-classes
 		:param filters Is the filters given from the front app
 		"""
-		_type = 'class'
+		_type = Eclass.CL
 		db = DbConnection()
 		query = "select distinct cl.* from {} as cl ".format(ec_str[_type]['table']) + \
 				"where (1=1)"
-		# filters['class'] = {
+		# filters[Eclass.CL] = {
 		# 	'v': True,
 		# 	'q': "AEI",
 		# }
@@ -72,16 +72,12 @@ class EclassDao(metaclass=Singleton):
 		:param cl is the e-class id
 		:param filters Is the filters given from the front app
 		"""
-		_type = 'property'
+		_type = Eclass.PR
 		db = DbConnection()
-		query = "select distinct pr.* from {} as pr ".format(ec_str['property']['table']) + \
+		query = "select distinct pr.* from {} as pr ".format(ec_str[Eclass.PR]['table']) + \
 				"left join {} as ccpr on pr.IrdiPR = ccpr.IrdiPR ".format(
-					ec_str['class']['children']['property']['relation']) + \
+					ec_str[Eclass.CL]['children'][Eclass.PR]['relation']) + \
 				f"where (ccpr.IrdiCC = '{cl}')"
-		filters[_type] = {
-			'v': True,
-			'q': "Manufacturer",
-		}
 		query = setFilters(query, filters, _type, 'pr')
 
 		cursor = db.get_cursor()
@@ -95,10 +91,10 @@ class EclassDao(metaclass=Singleton):
 		:param pr is the property id
 		:param filters Is the filters given from the front app
 		"""
-		_type = 'value'
+		_type = Eclass.VA
 		db = DbConnection()
-		query = "select va.* from {} va ".format(ec_str['value']['table']) + \
-				"left join {} prva ".format(ec_str['property']['children']['value']['relation']) + \
+		query = "select va.* from {} va ".format(ec_str[Eclass.VA]['table']) + \
+				"left join {} prva ".format(ec_str[Eclass.PR]['children'][Eclass.VA]['relation']) + \
 				"on va.IrdiVA = prva.IrdiVA " \
 				f"where prva.IrdiPR = '{pr}'"
 		query = setFilters(query, filters, _type, 'va')
@@ -114,10 +110,10 @@ class EclassDao(metaclass=Singleton):
 		:param pr is the property id
 		:param filters Is the filters given from the front app
 		"""
-		_type = 'unit'
+		_type = Eclass.UN
 		db = DbConnection()
-		query = "select un.* from {} un ".format(ec_str['unit']['table']) + \
-				"left join {} pr ".format(ec_str['property']['children']['unit']['relation']) + \
+		query = "select un.* from {} un ".format(ec_str[Eclass.UN]['table']) + \
+				"left join {} pr ".format(ec_str[Eclass.PR]['children'][Eclass.UN]['relation']) + \
 				"on un.IrdiUN = pr.IrdiUN " \
 				f"where pr.IrdiPR = '{pr}'"
 		query = setFilters(query, filters, _type, 'un')
@@ -138,17 +134,19 @@ class EclassDao(metaclass=Singleton):
 
 		for cl in cls:
 			_cl = mdl.createClassDict(cl)
-			prs = self.getProperties(_cl[ec_str['class']['id']], filters)
+			cl_id = ec_str[Eclass.CL]['id']
+			prs = self.getProperties(_cl[cl_id], filters)
 			if not prs:
 				structure = prepareStructure(structure, _cl, [], [], [])
 				continue
 			for pr in prs:
 				_pr = mdl.createPropertyDict(pr)
-				vas = self.getValues(_pr[ec_str['property']['id']], filters)
+				pr_id = ec_str[Eclass.PR]['id']
+				vas = self.getValues(_pr[pr_id], filters)
 				_vas = []
 				for va in vas:
 					_vas.append(mdl.createValueDict(va))
-				uns = self.getUnits(_pr[ec_str['property']['id']], filters)
+				uns = self.getUnits(_pr[pr_id], filters)
 				_uns = []
 				for un in uns:
 					_uns.append(mdl.createUnitDict(un))
@@ -162,10 +160,10 @@ class EclassDao(metaclass=Singleton):
 		Gets column names of e-class tables
 		"""
 		result = {}
-		result['cl'] = getColumnNames(ec_str['class']['table'])
-		result['pr'] = getColumnNames(ec_str['property']['table'])
-		result['va'] = getColumnNames(ec_str['value']['table'])
-		result['un'] = getColumnNames(ec_str['unit']['table'])
+		result['cl'] = getColumnNames(ec_str[Eclass.CL]['table'])
+		result['pr'] = getColumnNames(ec_str[Eclass.PR]['table'])
+		result['va'] = getColumnNames(ec_str[Eclass.VA]['table'])
+		result['un'] = getColumnNames(ec_str[Eclass.UN]['table'])
 		return result
 
 
@@ -181,35 +179,39 @@ def prepareStructure(structure, cl, pr, vas, uns):
 	if cl is None:
 		return structure
 
+	cl_id = ec_str[Eclass.CL]['id']
+
 	""" If structure has not the class key, then it is added """
-	if cl[ec_str['class']['id']] not in structure:
-		structure[cl[ec_str['class']['id']]] = {
+	if cl[cl_id] not in structure:
+		structure[cl[cl_id]] = {
 			'data': cl,
-			'name': cl[ec_str['class']['name']],
+			'name': cl[ec_str[Eclass.CL]['name']],
 			'children': {},
 		}
 
+	pr_id = ec_str[Eclass.PR]['id']
+
 	""" If property has no item, then return """
-	if ec_str['property']['id'] not in pr:
+	if pr_id not in pr:
 		return structure
 
 	""" Adding property as the class child """
-	structure[cl[ec_str['class']['id']]]['children'][pr[ec_str['property']['id']]] = {
+	structure[cl[cl_id]]['children'][pr[pr_id]] = {
 		'data': pr,
-		'name': pr[ec_str['property']['name']],
+		'name': pr[ec_str[Eclass.PR]['name']],
 		'children': {},
 	}
 
 	""" Adding value as the property child """
-	structure[cl[ec_str['class']['id']]]['children'][pr[ec_str['property']['id']]]['children']['value'] = {
+	structure[cl[cl_id]]['children'][pr[pr_id]]['children'][Eclass.VA] = {
 		'data': vas,
-		'name': 'value',
+		'name': Eclass.VA,
 	}
 
 	""" Adding unit as the property child """
-	structure[cl[ec_str['class']['id']]]['children'][pr[ec_str['property']['id']]]['children']['unit'] = {
+	structure[cl[cl_id]]['children'][pr[pr_id]]['children'][Eclass.UN] = {
 		'data': uns,
-		'name': 'unit',
+		'name': Eclass.UN,
 	}
 
 	# print(structure)
@@ -220,12 +222,24 @@ def prepareStructure(structure, cl, pr, vas, uns):
 def setFilters(query, filters, _type, alias):
 	if _type not in filters:
 		return query
-	if filters[_type]['v'] and filters[_type]['q']:
-		query += " and ("
-		for field in getColumnNames(ec_str[_type]['table']):
-			query += " {}.{} like '%{}%' or".format(alias, field['col'], filters[_type]['q'])
-		""" To remove last extra ' or' """
-		query = query[:-3] + ")"
+	q = filters[_type]['q']
+	c = filters[_type]['c']
+	if q:
+		""" If has any search value (q) """
+		if c:
+			""" If has column (c) then search that column """
+			for field in getColumnNames(ec_str[_type]['table']):
+				if c in field['col']:
+					query += " and ({}.{} like '%{}%')".format(alias, c, q)
+					break
+		else:
+			""" If has not any column (c) then search all columns """
+			query += " and ("
+			for field in getColumnNames(ec_str[_type]['table']):
+				query += " {}.{} like '%{}%' or".format(alias, field['col'], q)
+			""" To remove last extra ' or' """
+			query = query[:-3] + ")"
+
 	return query
 
 

@@ -1,6 +1,9 @@
 from django.views import View
 from eclass.eclass_dao import EclassDao
 from django.http import JsonResponse
+import json
+from types import SimpleNamespace
+from eclass.settings import Eclass
 
 
 class EclassViews(View):
@@ -15,7 +18,21 @@ class EclassViews(View):
 		"""
 		dao = EclassDao()
 		params = {}
-		params['filters'] = {}
+		_filters = json.loads(request.GET.get('filters'), object_hook=lambda d: SimpleNamespace(**d))
+		filters = {'tx': _filters.tx, Eclass.CL: {
+			'c': _filters.cl.c,
+			'q': _filters.cl.q,
+		}, Eclass.PR: {
+			'c': _filters.pr.c,
+			'q': _filters.pr.q,
+		}, Eclass.VA: {
+			'c': _filters.va.c,
+			'q': _filters.va.q,
+		}, Eclass.UN: {
+			'c': _filters.un.c,
+			'q': _filters.un.q,
+		}}
+		params['filters'] = filters
 		data = dao.getDataStructure(params)
 		return JsonResponse(data, safe=False)
 
