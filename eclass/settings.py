@@ -1,8 +1,22 @@
-class Eclass():
+class Eclass:
+	"""
+	Keeps data types enum
+	"""
 	CL = 'class'
 	PR = 'property'
 	VA = 'value'
 	UN = 'unit'
+
+
+class EclassSh:
+	"""
+	Keeps short name enum of data types
+	"""
+	CL = 'cl'
+	PR = 'pr'
+	VA = 'va'
+	UN = 'un'
+
 
 """
 Structure of the e-class data

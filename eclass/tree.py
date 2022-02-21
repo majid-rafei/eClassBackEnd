@@ -1,4 +1,4 @@
-from eclass.settings import ec_str, Eclass
+from eclass.settings import ec_str, Eclass, EclassSh
 from eclass.models import Models
 from eclass.dao import EclassDao
 
@@ -70,6 +70,7 @@ class Tree:
 			structure[cl[cl_id]] = {
 				'data': cl,
 				'name': cl[ec_str[Eclass.CL]['name']],
+				'type': EclassSh.CL,
 				'children': {},
 			}
 
@@ -83,6 +84,7 @@ class Tree:
 		structure[cl[cl_id]]['children'][pr[pr_id]] = {
 			'data': pr,
 			'name': pr[ec_str[Eclass.PR]['name']],
+			'type': EclassSh.PR,
 			'children': {},
 		}
 
@@ -90,12 +92,14 @@ class Tree:
 		structure[cl[cl_id]]['children'][pr[pr_id]]['children'][Eclass.VA] = {
 			'data': vas,
 			'name': Eclass.VA,
+			'type': EclassSh.VA,
 		}
 
 		""" Adding unit as the property child """
 		structure[cl[cl_id]]['children'][pr[pr_id]]['children'][Eclass.UN] = {
 			'data': uns,
 			'name': Eclass.UN,
+			'type': EclassSh.UN,
 		}
 
 		# print(structure)
@@ -115,6 +119,7 @@ class Tree:
 			array.append({
 				'data': _cl['data'],
 				'name': _cl['name'],
+				'type': _cl['type'],
 				'children': [],
 			})
 			if not bool(_cl['children']):
@@ -124,6 +129,7 @@ class Tree:
 				array[i]['children'].append({
 					'data': _pr['data'],
 					'name': _pr['name'],
+					'type': _pr['type'],
 					'children': [],
 				})
 				for child in _pr['children']:
@@ -131,6 +137,7 @@ class Tree:
 					array[i]['children'][j]['children'].append({
 						'data': _child['data'],
 						'name': _child['name'],
+						'type': _child['type'],
 					})
 				j = j + 1
 			j = 0
