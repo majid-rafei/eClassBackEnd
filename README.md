@@ -54,7 +54,6 @@ for creating a connection to the database.
 I had some problems when installing this package, so after some research, I found these links helpful:
   * For installing package *python3-dev*: [Stackoverflow link 1](https://stackoverflow.com/questions/52887357/problems-when-installing-python3-dev)
   * For *Python.h* fatal error: [Stackoverflow link 2](https://stackoverflow.com/questions/21530577/fatal-error-python-h-no-such-file-or-directory)
-* `pip install pandas`
 
 ## Creating DAO class and endpoint for getting structural data (~ 4 hours)
 To get structural data of e-class tables, a class name **EclassDao** is created 
