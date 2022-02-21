@@ -1,5 +1,5 @@
 from django.views import View
-from eclass.eclass_dao import EclassDao
+from eclass.tree import Tree
 from django.http import JsonResponse
 import json
 from types import SimpleNamespace
@@ -13,10 +13,10 @@ class EclassViews(View):
 
 	def getDataStructure(self, request):
 		"""
-		This endpoint is intended for getting whole e-class data as a tree, which shows relations
+		This endpoint is intended for getting whole e-class data as a tree, which shows relations too.
 		:param request Is the request object.
 		"""
-		dao = EclassDao()
+		tree = Tree()
 		params = {}
 		_filters = json.loads(request.GET.get('filters'), object_hook=lambda d: SimpleNamespace(**d))
 		filters = {'tx': _filters.tx, Eclass.CL: {
@@ -33,7 +33,7 @@ class EclassViews(View):
 			'q': _filters.un.q,
 		}}
 		params['filters'] = filters
-		data = dao.getDataStructure(params)
+		data = tree.getDataStructure(params)
 		return JsonResponse(data, safe=False)
 
 	def getFields(self, request):
@@ -41,6 +41,6 @@ class EclassViews(View):
 		This endpoint is intended for getting fields of e-class tables: Class, Property, Value, Unit
 		:param request Is the request object.
 		"""
-		dao = EclassDao()
-		data = dao.getFields()
+		tree = Tree()
+		data = tree.getFields()
 		return JsonResponse(data)

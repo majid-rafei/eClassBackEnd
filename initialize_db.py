@@ -1,4 +1,4 @@
-from eclass.eclass_dao import EclassDao
+from eclass.dao import EclassDao
 
 db = EclassDao()
 # db.initialize_db()
