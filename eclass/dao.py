@@ -120,22 +120,32 @@ class EclassDao(metaclass=Singleton):
 	def setFilters(self, query, filters, _type, alias):
 		if _type not in filters:
 			return query
+		tx = filters['tx']
 		q = filters[_type]['q']
 		c = filters[_type]['c']
+		tbl = ec_str[_type]['table']
+		fields = self.getColumnNames(tbl)
+		if tx:
+			""" If overall search q is set """
+			query += " and ("
+			for field in fields:
+				query += " {}.{} like '%{}%' or".format(alias, field['col'], tx)
+			""" To remove last extra ' or' and close the parenthesis """
+			query = query[:-3] + ")"
 		if q:
 			""" If has any search value (q) """
 			if c:
 				""" If has column (c) then search that column """
-				for field in self.getColumnNames(ec_str[_type]['table']):
+				for field in fields:
 					if c in field['col']:
 						query += " and ({}.{} like '%{}%')".format(alias, c, q)
 						break
 			else:
 				""" If has not any column (c) then search all columns """
 				query += " and ("
-				for field in self.getColumnNames(ec_str[_type]['table']):
+				for field in fields:
 					query += " {}.{} like '%{}%' or".format(alias, field['col'], q)
-				""" To remove last extra ' or' """
+				""" To remove last extra ' or' and close the parenthesis """
 				query = query[:-3] + ")"
 
 		return query
